@@ -1,0 +1,30 @@
+@import "bootstrap/dist/css/bootstrap";
+
+.navbar {
+    background-color: black !important;
+}
+.nav-link {
+    color: salmon !important;
+}
+#logo{
+    color:white !important;
+    font-weight: 600 !important;
+}
+.jumbotron{
+    background-image: asset-ulr('windows-jumbo.jpg');
+}
+
+html,
+body {
+    height: 100%;
+}
+#page-content {
+    flex: 1 0 auto;
+    background-color: lightgray;
+}
+#sticky-footer {
+    flex-shrink: none;
+}
+.article-contents{
+    margin: 0 3vw;
+}
