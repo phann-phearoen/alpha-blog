@@ -17,10 +17,10 @@
 
     <%= render 'layouts/navigation' %>
 
-    <% flash.each do |name, msg| %>
-      <%= msg %>
-    <% end %>
+    <%= render 'layouts/message' %>
 
     <%= yield %>
+
   </body>
+  
 </html>
