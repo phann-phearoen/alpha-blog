@@ -2,4 +2,12 @@
 
 <p class="article-contents"><%= link_to 'Create new article', new_article_path, class: "btn btn-primary" %></p>
 
+<div class="flickr_pagination">
+    <%= will_paginate @articles, :container => false %>
+</div>
+
 <%= render 'article-card' %>
+
+<div class="flickr_pagination my-3">
+    <%= will_paginate @articles, :container => false %>
+</div>
