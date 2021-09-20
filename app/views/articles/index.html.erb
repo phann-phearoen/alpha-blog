@@ -1,6 +1,8 @@
 <h1 class="text-center mt-4">Articles list</h1>
 
-<p class="article-contents"><%= link_to 'Create new article', new_article_path, class: "btn btn-primary" %></p>
+<% if logged_in? %>
+    <%= link_to 'Create new article', new_article_path, class: "btn btn-primary ms-5" %>
+<% end %>
 
 <div class="flickr_pagination">
     <%= will_paginate @articles, :container => false %>
