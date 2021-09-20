@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update]
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
 
     def new
         @user = User.new
@@ -39,6 +40,13 @@ class UsersController < ApplicationController
         end
     end
 
+    def destroy
+        @user.destroy
+        session[:user_id] = nil
+        flash[:notice] = "Account and associated articles successfully deleted"
+        redirect_to articles_path
+    end
+
     private
     def user_params
         params.require(:user).permit(:username, :email, :password)
@@ -46,5 +54,15 @@ class UsersController < ApplicationController
 
     def set_user
         @user = User.find(params[:id])
+    end
+
+    def require_same_user
+        if current_user == nil
+            flash[:alert] = "You are not logged in. Please log in or sign up"
+            redirect_to login_path
+        elsif current_user != @user
+            flash[:notice] = "You can only edit your own account."
+            redirect_to current_user
+        end
     end
 end

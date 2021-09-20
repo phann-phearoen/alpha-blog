@@ -4,6 +4,7 @@
 <% if logged_in? && @user.id == current_user.id %>
     <div class="text-center mt-4">
         <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-info shadow" %>
+        <%= link_to "Delete your profile", user_path(current_user), class: "btn btn-danger shadow", method: :delete, data: { confirm: "Are you sure?"} %>
     </div>
 <% end %>
 
