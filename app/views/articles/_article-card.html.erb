@@ -4,7 +4,12 @@
             <div class="col-8">
                 <div class="card text-center my-2 shadow rounded">
                     <div class="card-header">
-                        By <%= article.user.username %>
+                        <div>
+                            By <%= article.user.username if article.user %>
+                        </div>
+                        <% if article.categories.any? %>
+                            <%= render article.categories %>
+                        <% end %>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title text-success text-uppercase"><%= article.title %></h5>
